@@ -18,7 +18,7 @@ ViewPort.prototype.addObj = function (x_pos_r, y_pos_r, direction) {
 };
 ViewPort.prototype.changeDirection = function (new_direction) {
 	var a = 0;
-	while (a <= this.obj_data.length) {
+	while (a <= this.obj_data.length-1) {
 		this.obj_data[a][2] = new_direction;
 		a++;
 	}
@@ -26,7 +26,7 @@ ViewPort.prototype.changeDirection = function (new_direction) {
 };
 ViewPort.prototype.stopMotion = function () {
 	var a = 0;
-	while (a <= this.obj_data.length) {
+	while (a <= this.obj_data.length-1) {
 		this.obj_data[a][2] = null;
 		a++;
 	}
@@ -73,28 +73,28 @@ ViewPort.prototype.updateStats = function (by) {
 		if (this.obj_data[0][2] == "right") {
 			this.netX += by;
 			var a = 0;
-			while (a <= this.obj_data.length) {
+			while (a <= this.obj_data.length-1) {
 				this.obj_data[a][0] -= by;
 				a++;
 			}
 		} else if (this.obj_data[0][2] == "left") {
 			this.netX -= by;
 			var a = 0;
-			while (a <= this.obj_data.length) {
+			while (a <= this.obj_data.length-1) {
 				this.obj_data[a][0] += by;
 				a++;
 			}
 		} else if (this.obj_data[0][2] == "up") {
 			this.netY -= by;
 			var a = 0;
-			while (a <= this.obj_data.length) {
+			while (a <= this.obj_data.length-1) {
 				this.obj_data[a][1] += by;
 				a++;
 			}
 		} else if (this.obj_data[0][2] == "down") {
 			this.netY += by;
 			var a = 0;
-			while (a <= this.obj_data.length) {
+			while (a <= this.obj_data.length-1) {
 				this.obj_data[a][1] -= by;
 				a++;
 			}
@@ -114,4 +114,5 @@ ViewPort.prototype.updateCustomStats = function (pin, by) {
 		}
 	}
 };
-var VIEW = {"ViewPort": ViewPort};
+var VIEW = {"ViewPort": ViewPort, "RIGHT":"right", "LEFT":"left", "UP":"up", "DOWN":"down", "REVISION": "View.js v2.0"};
+console.log("%c" + VIEW.REVISION, 'color:#00aaff; background-color:black; font-size:30px; font-family:sans-serif;line-height:1.15;');
